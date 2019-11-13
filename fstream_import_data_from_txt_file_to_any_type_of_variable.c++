@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-	fstream fFile;
+	ifstream fFile;
 
 	fFile.open("file.txt"); //open txt file
 
