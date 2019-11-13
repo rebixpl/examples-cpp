@@ -1,5 +1,3 @@
-//.txt file -> variable c++ | import data from txt file to any type of variable 
-
 #include <iostream>
 #include <string>
 #include <fstream>
