@@ -9,7 +9,14 @@ void renderPlayer(int x, int y);
 void start();
 
 //zmienne globalne
+
+//rozmiar planszy do renderu
+int mapSize = 10;
 char buffor[10][10];
+
+//znaki graficzne
+char charBackground = '.'; 
+char charPlayer = '@';
 
 //pozycja gracza x i y oraz maksymalne wartosci
 int xPlayer = 4; // 0-9
@@ -26,16 +33,16 @@ int main()
 
 void render()
 {
-	for (int i = 0; i < 10; i++) // zmiana rozmiaru planszy -> i
+	for (int i = 0; i < mapSize; i++) // zmiana rozmiaru planszy -> i
 	{
-		for (int k = 0; k < 10; k++) // zmiana rozmiaru planszy -> k
+		for (int k = 0; k < mapSize; k++) // zmiana rozmiaru planszy -> k
 		{
-			buffor[i][k] = '.';
+			buffor[i][k] = charBackground;
 			
 			renderPlayer(xPlayer, yPlayer);
 			
 			//cout << k << endl;
-			if (k == 9) // zmiana rozmiaru planszy -> k - 1
+			if (k == (mapSize - 1)) // zmiana rozmiaru planszy -> k - 1
 				cout << endl;
 			else
 				cout << buffor[i][k];
@@ -45,7 +52,7 @@ void render()
 
 void renderPlayer(int x, int y)
 {
-	buffor[y][x] = '@';
+	buffor[y][x] = charPlayer;
 }
 
 void start()
