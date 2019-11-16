@@ -45,10 +45,10 @@ void render()
 		for (int k = 0; k < mapSize; k++) // zmiana rozmiaru planszy -> k
 		{
 			buffor[i][k] = charBackground;
-
+			
+			//render entities
 			renderPlayer(xPlayer, yPlayer);
-
-            renderEnemyFac(xFac, yFac);
+            		renderEnemyFac(xFac, yFac);
 
 			//cout << k << endl;
 			if (k == (mapSize - 1)) // zmiana rozmiaru planszy -> k - 1
