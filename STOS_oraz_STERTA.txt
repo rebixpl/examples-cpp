@@ -1,0 +1,28 @@
+Zmienne lokalne, w tym parametry funkcji, są alokowane na stosie.
+
+{
+    int x;
+    MojaKlasa k;
+}
+
+Najlepsza właściwość takich zmiennych jest to, że gdy zmienna wychodzi poza swój zakres (kończy żywot), pamięć jest zwalniana. 
+W przypadku klas destruktor jest wywołany.
+
+Pamięć alokowana za pomocą operatora new, new[], malloc() i tym podobnych jest na stercie. 
+Ta pamięć jest zwalniana tylko gdy mówisz wyraźnie, że chcesz to zrobić (poprzez delete, delete[], free itp.), 
+jeśli tego nie zrobisz to będzie zajęta aż do zakończenia programu.
+
+{
+    int* p = new int;
+}
+
+Tutaj zmienna p, która jest wskaźnikiem, jest alokowana na stosie (bo jest zmienną lokalną), 
+ale pamięć na którą wskazuje, jest na stercie. Gdy p wychodzi poza zakres, 
+jest zwalniana pamięć na stosie która trzymałą zmienną, ale pamięć na stercie nie jest.
+
+{
+    vector<int> tab(5);
+}
+
+tab jest zmienną lokalną, więc jest na stosie, ale w środku trzyma wskaźnik do pamięci alokowanej na stercie. 
+Gdy tab kończy żywot, destruktor vector<int> jest wywołany, który zwalnia tę pamięć na stercie.
