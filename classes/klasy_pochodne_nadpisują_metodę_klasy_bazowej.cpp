@@ -28,6 +28,7 @@ public:
     void Swim()
     {
         cout << "Tunczyk plywa naprawde szybko" << "\n";
+        Fish::Swim();
     }
 };
 
