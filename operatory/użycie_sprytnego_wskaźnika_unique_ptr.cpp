@@ -40,6 +40,9 @@ int main()
     // Podczas używania unique_ptr poniższe polecenia są zbędne:
     // delete pDynamicAllocInteger;
     // delete pHoliday;
+    
+    // Sekret kryje się w klasie sprytnego wskaźnika std::unique_ptr implementującej operator 
+    //(odpowiednio) dereferencji (*) i wyboru elementu składowego (->)
 
     return 0;
 }
