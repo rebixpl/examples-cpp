@@ -6,7 +6,7 @@
 template <typename T>
 class MyFirstTemplateClass{
 public:
-	void SetValue(const T& newValue) { Value = 		newValue; }
+	void SetValue(const T& newValue) { Value = newValue; }
 	const T& GetValue() const { return Value; }
 private:
 	T Value;
