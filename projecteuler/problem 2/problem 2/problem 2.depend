@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1299860813 source:e:\programming\repo\examples-cpp\projecteuler\problem 2\problem 2\bigint.cpp
+	<iostream>
+	<string.h>
+	<string>
+	<cstdlib>
+	"bigint.h"
+
+1299860813 e:\programming\repo\examples-cpp\projecteuler\problem 2\problem 2\bigint.h
+	<string>
+	<iostream>
+
+1588235017 source:e:\programming\repo\examples-cpp\projecteuler\problem 2\problem 2\main.cpp
+	<iostream>
+	"bigint.h"
+
