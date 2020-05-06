@@ -28,6 +28,6 @@ int main(int argc, const char **argv)
     Konstruktor przeciążony tworzy obiekt Adam w wieku 25 lat
     Konstruktor przeciążony tworzy obiekt Ewa w wieku 18 lat
     */
-   
+
     return 0;
 }
