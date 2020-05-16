@@ -10,9 +10,6 @@ protected:
     bool FreshWaterFish; // Atrybut dostępny jedynie dla klas pochodnych.
 
 public:
-    // Konstruktor klasy Fish.
-    Fish(bool IsFreshWater) : FreshWaterFish(IsFreshWater) {}
-
     void Swim()
     {
         if (FreshWaterFish)
@@ -27,18 +24,28 @@ public:
 class Tuna : public Fish
 {
 public:
-    Tuna() : Fish(false) {}
+    Tuna()
+    {
+        FreshWaterFish = false;// Zadeklarowanie chronionego elementu składowego klasy bazowej.
+    }
 };
 
 class Carp : public Fish
 {
 public:
-    Carp() : Fish(true) {}
+    Carp()
+    {
+        FreshWaterFish = true;
+    }
 };
 
 int main(int argc, const char **argv)
 {
-    // Konstruktor klasy pochodnej wraz z listą inicjalizacyjną
+    // specyfikator dostępu protected
+
+    /* Słowo kluczowe protected to specyfikator dostępu, którego powinieneś
+    używać, jeśli chcesz, aby określone atrybuty klasy bazowej były dostępne
+    jedynie dla klas potomnych */
 
     Carp myLunch;
     Tuna myDinner;
@@ -50,6 +57,10 @@ int main(int argc, const char **argv)
 
     cout << "Kolacja: ";
     myDinner.Swim(); // OUTPUT: ryby pływające w morzach
+
+    // Usuń znak komentarza na początku poniższego wiersza, aby przekonać się,
+    // że chronione elementy składowe są niedostępne na zewnątrz hierarchii klasy.
+    // myLunch.FreshWaterFish = false; // #Error
 
     return 0;
 }
