@@ -1,2 +1,5 @@
 ﻿  Programming Tests.cpp
+E:\Programming\REPO\examples-cpp\revision_2020\programming_tests_vs\Programming Tests\Programming Tests.cpp(21,11): warning C4566: character represented by universal-character-name '\u0144' cannot be represented in the current code page (1252)
+E:\Programming\REPO\examples-cpp\revision_2020\programming_tests_vs\Programming Tests\Programming Tests.cpp(21,11): warning C4566: character represented by universal-character-name '\u0142' cannot be represented in the current code page (1252)
+E:\Programming\REPO\examples-cpp\revision_2020\programming_tests_vs\Programming Tests\Programming Tests.cpp(34,11): warning C4566: character represented by universal-character-name '\u0142' cannot be represented in the current code page (1252)
   Programming Tests.vcxproj -> E:\Programming\REPO\examples-cpp\revision_2020\programming_tests_vs\Programming Tests\Debug\Programming Tests.exe
