@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 
 // Klasa kalendarza obsługująca dni, miesiące i lata,
