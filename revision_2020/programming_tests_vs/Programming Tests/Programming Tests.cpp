@@ -1,12 +1,10 @@
 ﻿#include <iostream>
 using namespace std;
 
-// Klasa kalendarza obsługująca dni, miesiące i lata,
-// która pozwala na przeprowadzanie inkrementacji dni
 class Date
 {
 private:
-	int Day; // Zakres: 1 - 30
+	int Day;
 	int Month;
 	int Year;
 
@@ -15,18 +13,16 @@ public:
 	Date(int InputDay, int InputMonth, int InputYear)
 		: Day(InputDay), Month(InputMonth), Year(InputYear) {};
 
-	// Jednoargumentowy operator inkrementacji (prefiks).
-	Date& operator++()
+	// Dwuargumentowy operator dodawania.
+	void operator+= (int DaysToAdd)
 	{
-		++Day;
-		return *this;
+		Day += DaysToAdd;
 	}
 
-	// Jednoargumentowy operator dekrementacji (prefiks).
-	Date& operator--()
+	// Dwuargumentowy operator odejmowania
+	void operator-= (int DaysToSub)
 	{
-		--Day;
-		return *this;
+		Day -= DaysToSub;
 	}
 
 	void DisplayDate() {
@@ -35,27 +31,23 @@ public:
 };
 
 int main() {
-	/* Programowanie jednoargumentowego operatora inkrementacji i dekrementacji */
+	/* Użycie operatora dodawania/przypisania
+	i odejmowania/przypisania w celu dodania lub odjęcia dni
+	w podanej dacie o wartość w postaci liczby całkowitej */
 
-	// Utworzenie i inicjalizacja obiektu wraz z datą 25 grudnia 2011 roku.
+	// Utworzenie i inicjalizacja obiektu wraz z dat 25 grudnia 2011 roku
 	Date Holiday(25, 12, 2011);
 
-	cout << "Obiekt został zainicjalizowany z datą: ";
-	Holiday.DisplayDate();
+	cout << "Dzień świąteczny: ";
+	Holiday.DisplayDate(); // OUTPUT: 25 / 12 / 2011
 
-	// Zastosowanie prefiksowego operatora inkrementacji
-	++Holiday;
+	cout << "Dzień świąteczny -= 19 daje: ";
+	Holiday -= 19;
+	Holiday.DisplayDate(); // OUTPUT: 6 / 12 / 2011
 
-	cout << "Data po zastosowaniu prefiksowego operatora inkrementacji: ";
-
-	// Wyświetlenie daty po inkrementacji
-	Holiday.DisplayDate(); // OUTPUT: 26 / 12 / 2011
-
-	--Holiday;
-	--Holiday;
-
-	cout << "Data po dwukrotnym zastosowaniu prefiksowego operatora dekrementacji: ";
-	Holiday.DisplayDate(); // OUTPUT:  24 / 12 / 2011
+	cout << "Dzień świąteczny += 25 daje: ";
+	Holiday += 25;
+	Holiday.DisplayDate(); // OUTPUT: 25 daje: 31 / 12 / 2011
 
 	return 0;
 }
