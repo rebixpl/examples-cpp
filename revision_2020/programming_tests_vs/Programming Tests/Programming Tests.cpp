@@ -1,53 +1,83 @@
 ﻿#include <iostream>
 using namespace std;
 
-class Date
+class MyString
 {
 private:
-	int Day;
-	int Month;
-	int Year;
+	char* Buffer;
 
 public:
-	// Konstruktor inicjalizujący obiekt dla dnia, miesiąca i roku.
-	Date(int InputDay, int InputMonth, int InputYear)
-		: Day(InputDay), Month(InputMonth), Year(InputYear) {};
-
-	// Dwuargumentowy operator dodawania.
-	void operator+= (int DaysToAdd)
+	// Konstruktor
+	MyString(const char* InitialInput)
 	{
-		Day += DaysToAdd;
+		if (InitialInput != NULL)
+		{
+			Buffer = new char[strlen(InitialInput) + 1];
+			strcpy(Buffer, InitialInput);
+		}
+		else
+			Buffer = NULL;
 	}
 
-	// Dwuargumentowy operator odejmowania
-	void operator-= (int DaysToSub)
+	// konstruktor kopiujący z listingu 9.9.
+	MyString(const MyString& CopySource)
 	{
-		Day -= DaysToSub;
+		if (CopySource.Buffer != NULL)
+		{
+			// Zapewnienie utworzenia pełnej kopii, w pierwszej kolejności następuje alokacja własnego bufora.
+			Buffer = new char[strlen(CopySource.Buffer) + 1];
+			strcpy(Buffer, CopySource.Buffer);
+		}
+		else
+			Buffer = NULL;
 	}
 
-	void DisplayDate() {
-		cout << Day << " / " << Month << " / " << Year << "\n";
+	// Kopiujący operator przypisania.
+	MyString& operator= (const MyString& CopySource)
+	{
+		if ((this != &CopySource) && (CopySource.Buffer != NULL))
+		{
+			if (Buffer != NULL)
+				delete[] Buffer;
+
+			// Zapewnienie utworzenia głębokiej kopii przez alokację własnego bufora w pierwszej kolejności
+			Buffer = new char[strlen(CopySource.Buffer) + 1];
+
+			// Operacja kopiowania źródła do bufora lokalnego.
+			strcpy(Buffer, CopySource.Buffer);
+		}
+		return *this;
+	}
+
+	// Destruktor
+	~MyString()
+	{
+		if (Buffer != NULL)
+			delete[] Buffer;
+	}
+
+	int GetLength() 
+	{
+		return strlen(Buffer);
+	}
+
+	operator const char*()
+	{
+		return Buffer;
 	}
 };
 
 int main() {
-	/* Użycie operatora dodawania/przypisania
-	i odejmowania/przypisania w celu dodania lub odjęcia dni
-	w podanej dacie o wartość w postaci liczby całkowitej */
+	// Wyposażona w kopiujący operator przypisania lepsza wersja klasy MyString z listingu 9.9
 
-	// Utworzenie i inicjalizacja obiektu wraz z dat 25 grudnia 2011 roku
-	Date Holiday(25, 12, 2011);
+	MyString String1("Witaj, ");
+	MyString String2("Chuju!");
 
-	cout << "Dzień świąteczny: ";
-	Holiday.DisplayDate(); // OUTPUT: 25 / 12 / 2011
-
-	cout << "Dzień świąteczny -= 19 daje: ";
-	Holiday -= 19;
-	Holiday.DisplayDate(); // OUTPUT: 6 / 12 / 2011
-
-	cout << "Dzień świąteczny += 25 daje: ";
-	Holiday += 25;
-	Holiday.DisplayDate(); // OUTPUT: 25 daje: 31 / 12 / 2011
+	cout << "Przed przypisaniem: " << endl;
+	cout << String1 << String2 << endl; // OUTPUT: 
+	String2 = String1;
+	cout << "Po przypisaniu String2 = String1: " << endl;
+	cout << String1 << String2 << endl; // OUTPUT: 
 
 	return 0;
 }
